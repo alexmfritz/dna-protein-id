@@ -73,4 +73,20 @@ public class DNA {
 
         return massPercentages;
     }
+
+    // Takes in String sequence of nucleotides without dashes included
+    // Returns an array of Strings organized into 3-nucleotide Codons
+    // Where each Codon is a group of nucleotides defined by NUCLEOTIDES_PER_CODON characters
+    public static String[] getCodons(String sequence) {
+        int codonCount = sequence.length() / NUCLEOTIDES_PER_CODON;
+        String[] codons = new String[codonCount];
+
+        for (int i = 0; i < codonCount; i++) {
+            int start = i * NUCLEOTIDES_PER_CODON;
+
+            codons[i] = sequence.substring(start, start + NUCLEOTIDES_PER_CODON);
+        }
+
+        return codons;
+    }
 }
