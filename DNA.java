@@ -25,6 +25,23 @@ public class DNA {
 
         Scanner input = new Scanner(iFile);
         PrintStream output = new PrintStream(oFile);
+
+        while (input.hasNextLine()) {
+            String name = input.nextLine();
+            String sequence = input.nextLine().toUpperCase();
+
+            int[] nucleoCount = countNucleotides(sequence);
+            int dashCount = sequence.length() - sequence.replace("-", "").length();
+
+            double totalMass = getTotalMass(nucleoCount, dashCount);
+            double[] massPercentages = getTotalMassPercentages(nucleoCount, totalMass);
+
+            String sequenceNoDashes = sequence.replace("-", "");
+            String[] codons = getCodons(sequenceNoDashes);
+            boolean isValidProtein = isProtein(codons, massPercentages);
+
+            outputResults(output, name, sequence, nucleoCount, totalMass, massPercentages, codons, isValidProtein);
+        }
     }
 
     // Returns array index of provided nucleotide character
@@ -108,7 +125,7 @@ public class DNA {
     }
 
     // Outputs all required data for single nucleotide sequence to provided PrintStream
-    public static void outputResults(PrintStream output, String name, String sequence, int[] nucleoCount, double[] massPercentages, double totalMass, String[] codons, boolean isProtein) {
+    public static void outputResults(PrintStream output, String name, String sequence, int[] nucleoCount, double totalMass, double[] massPercentages, String[] codons, boolean isProtein) {
         output.println("Region name: " + name);
         output.println("Nucleotides: " + sequence);
         output.println("Nuc. Counts: " + Arrays.toString(nucleoCount));
