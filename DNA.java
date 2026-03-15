@@ -89,4 +89,21 @@ public class DNA {
 
         return codons;
     }
+
+    // Return whether a nucleotide sequence is a valid protein
+    // Valid proteins must start with ATG codon, end with either TAA, TAG, or TGA codons
+    // Valid proteins must also have a minimum count of codons and the mass of C + G combined must be 
+    // equal to or greater than MIN_CG
+    public static boolean isProtein(String[] codons, double[] massPercentages) {
+        if (codons.length < MIN_CODONS) return false;
+
+        String firstCodon = codons[0];
+        String lastCodon = codons[codons.length - 1];
+        
+        boolean ATG = firstCodon.equals("ATG");
+        boolean others = lastCodon.equals("TAA") || lastCodon.equals("TAG") || lastCodon.equals("TGA");
+        boolean minMass = massPercentages[1] + massPercentages[2] >= MIN_CG;
+
+        return ATG && others && minMass;
+    }
 }
