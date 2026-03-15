@@ -6,7 +6,7 @@ public class DNA {
     public static final int MIN_CG = 30;
     public static final int NUCLEOTIDES = 4;
     public static final int NUCLEOTIDES_PER_CODON = 3;
-    public static final double[] NUCLEOTIDE_MASSES = {135.128, 111.10, 151.128, 125.107};
+    public static final double[] NUCLEOTIDE_MASSES = {135.128, 111.103, 151.128, 125.107};
     public static final double JUNK_MASS = 100.0;
     
 
@@ -126,7 +126,7 @@ public class DNA {
 
     // Outputs all required data for single nucleotide sequence to provided PrintStream
     public static void outputResults(PrintStream output, String name, String sequence, int[] nucleoCount, double totalMass, double[] massPercentages, String[] codons, boolean isProtein) {
-        output.println("Region name: " + name);
+        output.println("Region Name: " + name);
         output.println("Nucleotides: " + sequence);
         output.println("Nuc. Counts: " + Arrays.toString(nucleoCount));
         output.println("Total Mass%: " + Arrays.toString(massPercentages) + " of " + Math.round(totalMass * 10.0) / 10.0);
