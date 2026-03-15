@@ -27,12 +27,15 @@ public class DNA {
         PrintStream output = new PrintStream(oFile);
     }
 
-    // Return array index of provided nucleotide character
+    // Returns array index of provided nucleotide character
     // A = 0, C = 1, G = 2, T = 3
     public static int indexNucleotide(char nucleotide) {
         return nucleotide == 'A' ? 0 : nucleotide == 'C' ? 1 : nucleotide == 'G' ? 2 : 3;
     }
 
+    // Returns occurences of each nucleotide (A, C, G, T) in the provided sequence
+    // Ignores all dash characters
+    // Returns array length of NUCLEOTIDES with counts in same order as A, C, G, T 
     public static int[] countNucleotides(String sequence) {
         int[] nucleoCount = new int[NUCLEOTIDES];
 
@@ -46,6 +49,8 @@ public class DNA {
         return nucleoCount;
     }
 
+    // Returns the raw total mass of the sequence including junk mass from dashes
+    // Value is representative of mass before percentage calculation
     public static double getTotalMass(int[] nucleoCount, int dashCount) {
         double totalMass = dashCount * JUNK_MASS;
 
