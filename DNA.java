@@ -10,8 +10,14 @@ public class DNA {
 
         Scanner console = new Scanner(System.in);
         System.out.print("Input file name? ");
-        String iFile = console.nextLine();
+        String iFilePath = console.nextLine();
         System.out.print("Output file name? ");
-        String oFile = console.nextLine();
+        String oFilePath = console.nextLine();
+
+        File iFile = new File(iFilePath);
+        File oFile = new File(oFilePath);
+
+        Scanner input = new Scanner(iFile);
+        PrintStream output = new PrintStream(oFile);
     }
 }
