@@ -106,4 +106,15 @@ public class DNA {
 
         return ATG && others && minMass;
     }
+
+    // Outputs all required data for single nucleotide sequence to provided PrintStream
+    public static void outputResults(PrintStream output, String name, String sequence, int[] nucleoCount, double[] massPercentages, double totalMass, String[] codons, boolean isProtein) {
+        output.println("Region name: " + name);
+        output.println("Nucleotides: " + sequence);
+        output.println("Nuc. Counts: " + Arrays.toString(nucleoCount));
+        output.println("Total Mass%: " + Arrays.toString(massPercentages) + " of " + Math.round(totalMass * 10.0) / 10.0);
+        output.println("Codons List: " + Arrays.toString(codons));
+        output.println("Is Protein?: " + (isProtein ? "YES" : "NO"));
+        output.println();
+    }
 }
