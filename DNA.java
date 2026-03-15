@@ -35,7 +35,7 @@ public class DNA {
 
     // Returns occurences of each nucleotide (A, C, G, T) in the provided sequence
     // Ignores all dash characters
-    // Returns array length of NUCLEOTIDES with counts in same order as A, C, G, T 
+    // Returns int array the length of NUCLEOTIDES with counts in same order as A, C, G, T 
     public static int[] countNucleotides(String sequence) {
         int[] nucleoCount = new int[NUCLEOTIDES];
 
@@ -59,5 +59,18 @@ public class DNA {
         }
 
         return totalMass;
+    }
+
+    // Returns rounded (to 1 decimal place) mass percentages for each nucleotide
+    // Returns double array the length of NUCLEOTIDES with mass percentages in same order as A, C, G, T 
+    public static double[] getTotalMassPercentages(int[] nucleoCount, double totalMass) {
+        double[] massPercentages = new double[NUCLEOTIDES];
+
+        for (int i = 0; i < NUCLEOTIDES; i++) {
+            double rawPercentage = nucleoCount[i] * NUCLEOTIDE_MASSES[i] / totalMass * 100.0;
+            massPercentages[i] = Math.round(rawPercentage * 10.0) / 10.0;
+        }
+
+        return massPercentages;
     }
 }
