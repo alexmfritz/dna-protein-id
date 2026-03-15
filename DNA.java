@@ -34,15 +34,25 @@ public class DNA {
     }
 
     public static int[] countNucleotides(String sequence) {
-        int[] count = new int[this.NUCLEOTIDES];
+        int[] nucleoCount = new int[NUCLEOTIDES];
 
         for (int i = 0; i < sequence.length(); i++) {
             char c = sequence.charAt(i);
             if (c != '-') {
-                counts[this.indexNucleotide(c)]++;
+                nucleoCount[indexNucleotide(c)]++;
             }
         }
 
-        return count;
+        return nucleoCount;
+    }
+
+    public static double getTotalMass(int[] nucleoCount, int dashCount) {
+        double totalMass = dashCount * JUNK_MASS;
+
+        for (int i = 0; i < NUCLEOTIDES; i++) {
+            totalMass += nucleoCount[i] * NUCLEOTIDE_MASSES[i];
+        }
+
+        return totalMass;
     }
 }
