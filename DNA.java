@@ -26,4 +26,23 @@ public class DNA {
         Scanner input = new Scanner(iFile);
         PrintStream output = new PrintStream(oFile);
     }
+
+    // Return array index of provided nucleotide character
+    // A = 0, C = 1, G = 2, T = 3
+    public static int indexNucleotide(char nucleotide) {
+        return nucleotide == 'A' ? 0 : nucleotide == 'C' ? 1 : nucleotide == 'G' ? 2 : 3;
+    }
+
+    public static int[] countNucleotides(String sequence) {
+        int[] count = new int[this.NUCLEOTIDES];
+
+        for (int i = 0; i < sequence.length(); i++) {
+            char c = sequence.charAt(i);
+            if (c != '-') {
+                counts[this.indexNucleotide(c)]++;
+            }
+        }
+
+        return count;
+    }
 }
