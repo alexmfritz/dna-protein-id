@@ -1,11 +1,22 @@
+// Alex Fritz
+// CS& 141
+// Project 4 - DNA
+
 import java.util.*;
 import java.io.*;
 
+// The Java DNA program reads DNA nucleotide sequences from an input file
+// and writes to a different file with a set of information based on the nucleotides in the sequence
+// The output information set includes the nucleotide count, mass percentages, codons, and whether the sequence is a valid protein
+
 public class DNA {
+    // required constants
     public static final int MIN_CODONS = 5;
     public static final int MIN_CG = 30;
     public static final int NUCLEOTIDES = 4;
     public static final int NUCLEOTIDES_PER_CODON = 3;
+    
+    // constants needed to calculate mass
     public static final double[] NUCLEOTIDE_MASSES = {135.128, 111.103, 151.128, 125.107};
     public static final double JUNK_MASS = 100.0;
     
